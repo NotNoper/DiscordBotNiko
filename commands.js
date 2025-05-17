@@ -32,8 +32,56 @@ const HOT_COMMAND = {
   type: 1,
   integration_types: [0, 1],
   contexts: [0, 1, 2],
-}
+  options: [
+    {
+      name: 'image',
+      description: 'Upload your pic 💅',
+      type: 11, 
+      required: true,
+    },
+  ],
+};
 
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND];
+const DARTH_COMMAND = {
+  name: 'askdarthvader',
+  description: 'Tells you the answer to your question',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'text',
+      description: 'Ask Darth Vader anything',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
+const SUGGESTIONS_COMMAND = {
+  name: 'suggest',
+  description: 'Suggest a new feature or improvement',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'text',
+      description: 'Your suggestion',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
+const ANNOY_IRIDION_COMMAND = {
+  name: 'annoyiridion',
+  description: 'Annoy Iridion',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2]
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
