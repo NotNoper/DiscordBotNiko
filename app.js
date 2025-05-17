@@ -131,11 +131,21 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: `hello worldddd ${getRandomEmoji()}`,
+          content: `hello world ${getRandomEmoji()}`,
         },
       });
     }
 
+    if (name === 'amihot') {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `hello world ${getRandomEmoji()}`,
+        },
+      });
+    }
 
     console.error(`unknown command: ${name}`);
     return res.status(400).json({ error: 'unknown command idiot' });

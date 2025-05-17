@@ -26,6 +26,14 @@ const TEST_COMMAND = {
   contexts: [0, 1, 2],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND];
+const HOT_COMMAND = {
+  name: 'amihot',
+  description: 'Tells you if you are hot or not based off an image',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+}
+
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
