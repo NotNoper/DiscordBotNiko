@@ -232,7 +232,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
-    if (name === 'annoyiridion') {
+    if (name === 'annoy') {
       const dioMaddenerResponses = [
   "You're like a cloud—when you disappear, it's a beautiful day.",
   "Your secrets are always safe with me. I never even listen when you tell me them.",
@@ -335,12 +335,13 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
   "You have the charm of expired milk.",
   "You’re the reason people invented ‘ignore’ buttons."
 ];
+      const person = data.options.find(opt => opt.name === 'user');
       const randomResponse = dioMaddenerResponses[Math.floor(Math.random() * dioMaddenerResponses.length)];
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: `<@993540284229095504> <@1027636569592561674> ${randomResponse}`,
+          content: `${person.value} ${randomResponse}`,
         },
       });
     }

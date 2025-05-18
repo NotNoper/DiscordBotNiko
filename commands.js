@@ -74,12 +74,20 @@ const SUGGESTIONS_COMMAND = {
   ],
 };
 
-const ANNOY_IRIDION_COMMAND = {
-  name: 'annoyiridion',
-  description: 'Annoy Iridion',
+const ANNOY_COMMAND = {
+  name: 'annoy',
+  description: 'Annoy someone',
   type: 1,
   integration_types: [0, 1],
-  contexts: [0, 1, 2]
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'user',
+      description: 'someone to annoy',
+      type: 3,
+      required: true,
+    },
+  ],
 };
 
 const GRUG_LOVE_COMMAND = {
@@ -146,6 +154,6 @@ const TELL_PAKOS_COMMAND = {
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND, IS_TRANS_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND, IS_TRANS_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
