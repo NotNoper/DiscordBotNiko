@@ -232,7 +232,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
             {
               image: {
             // Use a direct .gif link here
-                url: 'https://media.tenor.com/3kLxQWgbv0sAAAAC/miku-teto.gif',
+                url: 'https://media1.tenor.com/m/CvlGX5L9B4YAAAAd/miku-teto.gif',
               },
             },
           ],
