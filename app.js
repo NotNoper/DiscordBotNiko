@@ -144,7 +144,7 @@ if (name === 'amihot') {
   const attachment = data.resolved.attachments[attachmentId];
 
   // Create a stable hash from the image URL
-  const hash = crypto.createHash('sha256').update(attachment.url).digest('hex');
+  const hash = crypto.createHash('sha256').update(attachment).digest('hex');
 
   // Convert hash to an integer, then scale to 1–10
   const hashInt = parseInt(hash.slice(0, 8), 16); // Use first 8 hex digits
