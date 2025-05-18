@@ -413,6 +413,74 @@ const gayResponses = [
       });
     }
 
+    if (name === 'areyouatrans') {
+const genderResponses = [
+  // TRANS RESPONSES 🏳️‍⚧️
+  "You're trans—and your gender is a finely tuned aesthetic. 🏳️‍⚧️",
+  "You're trans, and your vibe is immaculate. 🏳️‍⚧️",
+  "You're trans—you've unlocked gender DLC. 🏳️‍⚧️",
+  "You're trans, and your existence rewrites the lore. 🏳️‍⚧️",
+  "You're trans—gender just couldn’t contain you. 🏳️‍⚧️",
+  "You're trans. Your pronouns have plot armor. 🏳️‍⚧️",
+  "You're trans—you crafted your gender like a legendary weapon. 🏳️‍⚧️",
+  "You're trans. Your reflection nods back with approval. 🏳️‍⚧️",
+  "You're trans—your gender is just correct™. 🏳️‍⚧️",
+  "You're trans, and your gender ray is set to 'slay.' 🏳️‍⚧️",
+  "You're trans—your gender is DIY, artisan, and cooler than cis ever was. 🏳️‍⚧️",
+  "You're trans. Even your vibes have transitioned. 🏳️‍⚧️",
+  "You're trans, and you invented a new shade of confidence. 🏳️‍⚧️",
+  "You're trans—gender envy radiates from your pores. 🏳️‍⚧️",
+  "You're trans. You turned dysphoria into drip. 🏳️‍⚧️",
+  "You're trans—you make mirrors question *themselves*. 🏳️‍⚧️",
+  "You're trans. You changed your gender and the Wi-Fi started working better. 🏳️‍⚧️",
+  "You're trans—you didn’t just transition, you evolved. 🏳️‍⚧️",
+  "You're trans. You’re the main character of your gender arc. 🏳️‍⚧️",
+  "You're trans—and it’s giving divine timeline energy. 🏳️‍⚧️",
+  "You're trans. You customized your identity like a Sims avatar and it *slaps*. 🏳️‍⚧️",
+  "You're trans. You gendered so hard you looped back into cool. 🏳️‍⚧️",
+  "You're trans—you picked your pronouns like Pokémon starters. 🏳️‍⚧️",
+  "You're trans. Your existence is a powerful retcon. 🏳️‍⚧️",
+  "You're trans—you didn't come out, you *arrived*. 🏳️‍⚧️",
+
+  // CIS RESPONSES 🧍
+  "You're cis. You’ve never once questioned the loading screen. 🧍",
+  "You're cis—your gender settings are still on factory default. 🧍",
+  "You're cis. Your pronouns come pre-installed. 🧍",
+  "You're cis—you looked in the mirror and said 'yeah, this'll do.' 🧍",
+  "You're cis. Your gender is about as spicy as plain oatmeal. 🧍",
+  "You're cis—you've never had to update your gender drivers. 🧍",
+  "You're cis, and you've never experienced gender lag. 🧍",
+  "You're cis—your gender identity is in the user manual. 🧍",
+  "You're cis. You wear socks with your gender. 🧍",
+  "You're cis—your vibes are ‘default character select.’ 🧍",
+  "You're cis. You've never been asked your pronouns in good faith. 🧍",
+  "You're cis. You gendered by simply existing. 🧍",
+  "You're cis—you treat gender like a library book: you just keep it until someone asks. 🧍",
+  "You're cis. You thought ‘cis’ was a file extension. 🧍",
+  "You're cis—you use your birth certificate as personality. 🧍",
+  "You're cis. You once said ‘I don’t see gender.’ 🧍",
+  "You're cis—your gender identity has not been patched in years. 🧍",
+  "You're cis. You skipped the character customization screen. 🧍",
+  "You're cis—you've never met the Gender Goblin™. 🧍",
+  "You're cis. You treat pronouns like a shrug. 🧍",
+  "You're cis—you once called gender 'not that deep.' 🧍",
+  "You're cis. Your idea of a gender journey is walking to the bathroom. 🧍",
+  "You're cis—you still think gender reveals are a good idea. 🧍",
+  "You're cis. Your gender is beige. Just beige. 🧍",
+  "You're cis—you never once had to Google ‘what is gender.’ 🧍",
+];
+
+      const person = data.options.find(opt => opt.name === 'user');
+      const randomResponse = genderResponses[Math.floor(Math.random() * genderResponses.length)];
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `${person.value} ${randomResponse}`,
+        },
+      });
+    }
+
     if (name === 'gruglove') {
       const grugResponses = [
   "you good. Grug like. Grug heart go boom.",

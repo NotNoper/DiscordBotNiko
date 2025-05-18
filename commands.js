@@ -114,6 +114,22 @@ const IS_GAY_HOE_COMMAND = {
   ],
 };
 
+const IS_TRANS_COMMAND = {
+  name: 'areyouatrans',
+  description: 'I copy pasted the other one',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'user',
+      description: 'suspected user',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
 const TELL_PAKOS_COMMAND = {
   name: 'tellpakos',
   description: 'Make Leo tell Pakos something for you because you fucking suck at social interactions you twat',
@@ -130,6 +146,6 @@ const TELL_PAKOS_COMMAND = {
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND, IS_TRANS_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
