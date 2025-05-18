@@ -345,6 +345,74 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
+    if (name === 'areyouagayhoe') {
+const gayResponses = [
+  // GAY RESPONSES 🌈
+  "You're gay, and you're glowing with glitter right now. 🌈",
+  "You're so gay, you probably turned this code rainbow. 🌈",
+  "You're gay, and your playlist is just bangers and divas. 🌈",
+  "You’re gay—your aura smells like iced coffee and confidence. 🌈",
+  "You're gay, and you just involuntarily did jazz hands. 🌈",
+  "You're gay, and your walk has background music. 🌈",
+  "You're gay—you've made eye contact and created drama. 🌈",
+  "You're gay, and that explains the flair in your typing. 🌈",
+  "You're gay—rainbows follow you like a cursed RPG aura. 🌈",
+  "You're gay. The glitter is legally binding. 🌈",
+  "You're gay, and your browser history proves it. 🌈",
+  "You're gay, and even your socks are fabulous. 🌈",
+  "You're gay, and your pet knows. 🌈",
+  "You're gay, and you read this in a musical theater voice. 🌈",
+  "You're gay—your plants are thriving and so are you. 🌈",
+  "You're gay, and you once cried over a sunset. 🌈",
+  "You're gay, and yes, that *was* a vibe shift. 🌈",
+  "You're gay—your eyeliner is metaphysical. 🌈",
+  "You're gay. You don't just slay—you *devour*. 🌈",
+  "You're gay, and your keyboard is low-key fabulous. 🌈",
+  "You're gay—you brought a tote bag to a knife fight. 🌈",
+  "You're gay. Even your code has a personality. 🌈",
+  "You're gay—emotionally, spiritually, cosmically. 🌈",
+  "You're gay. You live, laugh, and *love* aggressively. 🌈",
+  "You're gay. You whispered 'slay' under your breath just now. 🌈",
+
+  // STRAIGHT RESPONSES 🧍‍♂️
+  "You're straight. You just sighed for no reason. 🧍‍♂️",
+  "You're straight, and you have strong opinions about lawn care. 🧍‍♂️",
+  "You're straight—you just gave a thumbs-up in real life. 🧍‍♂️",
+  "You're straight. You describe pizza as 'good stuff.' 🧍‍♂️",
+  "You're straight—your default dance is a head nod. 🧍‍♂️",
+  "You're straight. You think 'weekend plans' means Home Depot. 🧍‍♂️",
+  "You're straight—emotionally stable, but beige. 🧍‍♂️",
+  "You're straight. You definitely said 'let's rock and roll' once. 🧍‍♂️",
+  "You're straight—you have a deep connection to cargo shorts. 🧍‍♂️",
+  "You're straight. Your Spotify Wrapped is 100% classic rock. 🧍‍♂️",
+  "You're straight. You call jeans 'a nice pair of pants.' 🧍‍♂️",
+  "You're straight. You refer to any drama as 'a bit much.' 🧍‍♂️",
+  "You're straight—you only use emojis when you're being sarcastic. 🧍‍♂️",
+  "You're straight—you've rewatched *Top Gun* sincerely. 🧍‍♂️",
+  "You're straight. You said 'can't complain' to a stranger today. 🧍‍♂️",
+  "You're straight—you think 'spicy' means black pepper. 🧍‍♂️",
+  "You're straight. You gave a firm handshake to your own reflection. 🧍‍♂️",
+  "You're straight—your idea of decorating is 'putting stuff on a shelf.' 🧍‍♂️",
+  "You're straight, and you think WiFi is magic. 🧍‍♂️",
+  "You're straight. You told someone to 'crack open a cold one' unironically. 🧍‍♂️",
+  "You're straight—you consider khaki a power move. 🧍‍♂️",
+  "You're straight. Your soul is in grayscale. 🧍‍♂️",
+  "You're straight—you rate sandwiches on a 10-point scale. 🧍‍♂️",
+  "You're straight—you've referred to yourself as a 'simple guy.' 🧍‍♂️",
+  "You're straight. You just nodded and said, 'makes sense.' 🧍‍♂️",
+];
+
+      const person = data.options.find(opt => opt.name === 'user');
+      const randomResponse = gayResponses[Math.floor(Math.random() * gayResponses.length)];
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `${person.value} ${randomResponse}`,
+        },
+      });
+    }
+
     if (name === 'gruglove') {
       const grugResponses = [
   "you good. Grug like. Grug heart go boom.",
@@ -382,6 +450,8 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
     console.error(`unknown command: ${name}`);
     return res.status(400).json({ error: 'unknown command idiot' });
   }
+
+  
 
   console.error('unknown interaction type', type);
   return res.status(400).json({ error: 'unknown interaction type' });
