@@ -227,14 +227,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          content: `${person} ${text}`,
-          embeds: [
-            {
-              video: {
-                url: 'https://media.tenor.com/CvlGX5L9B4YAAAPo/miku-teto.mp4',
-              },
-            },
-          ],
+          content: `${person} ${text}\nhttps://media.tenor.com/CvlGX5L9B4YAAAPo/miku-teto.mp4`,
         },
       });
     }
