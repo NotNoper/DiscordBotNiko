@@ -223,22 +223,23 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       const options = data.options;
       const text = options.find(opt => opt.name === 'text').value;
       const person = options.find(opt => opt.name === 'user').value;
-      // Send a message into the channel where command was triggered from
+
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          // Fetches a random emoji to send from a helper function
           content: `${person} ${text}`,
+          embeds: [
+            {
+              image: {
+            // Use a direct .gif link here
+                url: 'https://media.tenor.com/3kLxQWgbv0sAAAAC/miku-teto.gif',
+              },
+            },
+          ],
         },
-        embeds: [
-        {
-          image: {
-            url: 'https://tenor.com/view/miku-teto-mesmerizer-gif-790740585882126214',
-          },
-        },
-    ],
       });
     }
+
 
     if (name === 'tellpakos') {
       const options = data.options;
@@ -490,7 +491,62 @@ const genderResponses = [
   "You're cis—you still think gender reveals are a good idea. 🧍",
   "You're cis. Your gender is beige. Just beige. 🧍",
   "You're cis—you never once had to Google ‘what is gender.’ 🧍",
+
+  // NON-BINARY RESPONSES 💫
+  "You're non-binary—your gender transcends mortal understanding. 💫",
+  "You're non-binary. You are the liminal space between vibes. 💫",
+  "You're non-binary—your gender is a well-crafted indie game. 💫",
+  "You're non-binary. Your pronouns are written in stardust. 💫",
+  "You're non-binary—the binary was too basic for your taste. 💫",
+  "You're non-binary. You operate on aesthetic, not rules. 💫",
+  "You're non-binary—your gender is like jazz: unpredictable and brilliant. 💫",
+  "You're non-binary. You skipped the gender dropdown. 💫",
+  "You're non-binary—you don’t *have* a box, you *burned* it. 💫",
+  "You're non-binary. Your vibe is somewhere between moonlight and mischief. 💫",
+  "You're non-binary—you mix genders like potions. 💫",
+  "You're non-binary. You're the secret third thing. 💫",
+  "You're non-binary—your gender is coded in dream logic. 💫",
+  "You're non-binary. Time, space, and pronouns bend around you. 💫",
+  "You're non-binary—you exist between the notes. 💫",
+  "You're non-binary. You are the glitch in the gender matrix. 💫",
+  "You're non-binary—your gender floats like a cloud, unbothered. 💫",
+  "You're non-binary. Your existence makes the binary nervous. 💫",
+  "You're non-binary—you summoned your gender with a tarot deck. 💫",
+  "You're non-binary. Your energy is ethereal and unexplained. 💫",
+  "You're non-binary—you chose chaos and it looks good on you. 💫",
+  "You're non-binary. Gender? You customized it. 💫",
+  "You're non-binary—pronouns? You pick 'em like outfits. 💫",
+  "You're non-binary. The stars spell out your gender. 💫",
+  "You're non-binary. You ARE the vibe. 💫",
+
+  // GENDERFLUID RESPONSES 🌊
+  "You're genderfluid—today’s gender is ✨movement✨. 🌊",
+  "You're genderfluid. Your identity updates like a playlist. 🌊",
+  "You're genderfluid—your gender has patch notes. 🌊",
+  "You're genderfluid. You switch it up like outfits and slay every one. 🌊",
+  "You're genderfluid—your gender is a shape-shifting dragon. 🌊",
+  "You're genderfluid. You walk into a room and the vibes adjust. 🌊",
+  "You're genderfluid—your pronouns moonwalk. 🌊",
+  "You're genderfluid. Your gender spins like a disco ball. 🌊",
+  "You're genderfluid—your identity is fluid and fierce. 🌊",
+  "You're genderfluid. Some days it's they/them, some days it's ‘watch me.’ 🌊",
+  "You're genderfluid—your gender is in motion like a perfect transition. 🌊",
+  "You're genderfluid. Your vibe is dynamic by design. 🌊",
+  "You're genderfluid—your gender has a playlist and it slaps. 🌊",
+  "You're genderfluid. You gender like a shapeshifter with style. 🌊",
+  "You're genderfluid—your identity flows like poetry. 🌊",
+  "You're genderfluid. Your gender defies gravity. 🌊",
+  "You're genderfluid—each morning is a mystery box. 🌊",
+  "You're genderfluid. You flex gender like a performance art piece. 🌊",
+  "You're genderfluid—your gender’s got main character energy. 🌊",
+  "You're genderfluid. Labels fear your power. 🌊",
+  "You're genderfluid—your gender just hit shuffle. 🌊",
+  "You're genderfluid. You update your gender in real time. 🌊",
+  "You're genderfluid—your gender changes with the moon. 🌊",
+  "You're genderfluid. Your pronouns have a wardrobe. 🌊",
+  "You're genderfluid. The binary can't catch you—you’re too fast. 🌊",
 ];
+
 
       const person = data.options.find(opt => opt.name === 'user');
       const randomResponse = genderResponses[Math.floor(Math.random() * genderResponses.length)];
