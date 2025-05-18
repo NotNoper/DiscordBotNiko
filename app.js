@@ -228,14 +228,9 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: `${person} ${text}`,
-          embeds: [
-            {
-              image: {
-            // Use a direct .gif link here
-                url: 'https://media1.tenor.com/m/CvlGX5L9B4YAAAAd/miku-teto.gif',
-              },
-            },
-          ],
+           message_reference: {
+            message_id: '1373712246710206494',
+          },
         },
       });
     }
