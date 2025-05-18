@@ -10,6 +10,7 @@ import {
 } from 'discord-interactions';
 import { getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
+import crypto from 'crypto';
 
 // Create an express app
 const app = express();
@@ -136,28 +137,34 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
-    if (name === 'amihot') {
-      const options = data.options;
-      const attachmentId = options.find(opt => opt.name === 'image').value;
-      const attachment = data.resolved.attachments[attachmentId];
 
-  // Random hotness rating between 1 and 10
-      const rating = Math.floor(Math.random() * 10) + 1;
+if (name === 'amihot') {
+  const options = data.options;
+  const attachmentId = options.find(opt => opt.name === 'image').value;
+  const attachment = data.resolved.attachments[attachmentId];
 
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          content: `🔥 I rate you a **${rating}/10** hotness level!`,
-          embeds: [
-            {
-              image: {
-                url: attachment.url,
-              },
-            },
-          ],
+  // Create a stable hash from the image URL
+  const hash = crypto.createHash('sha256').update(attachment.url).digest('hex');
+
+  // Convert hash to an integer, then scale to 1–10
+  const hashInt = parseInt(hash.slice(0, 8), 16); // Use first 8 hex digits
+  const rating = (hashInt % 10) + 1;
+
+  return res.send({
+    type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+    data: {
+      content: `🔥 I rate you a **${rating}/10** hotness level!`,
+      embeds: [
+        {
+          image: {
+            url: attachment.url,
+          },
         },
-      });
-    }
+      ],
+    },
+  });
+}
+
 
     if (name === 'askdarthvader') {
       const vaderResponses = [
