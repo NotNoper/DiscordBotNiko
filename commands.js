@@ -82,6 +82,21 @@ const ANNOY_IRIDION_COMMAND = {
   contexts: [0, 1, 2]
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND];
+const GRUG_LOVE_COMMAND = {
+  name: 'gruglove',
+  description: 'Grug shows love',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'user',
+      description: 'someone to love',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

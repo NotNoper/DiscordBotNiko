@@ -332,6 +332,40 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
+    if (name === 'gruglove') {
+      const grugResponses = [
+  "you good. Grug like. Grug heart go boom.",
+  "you not throw rock at Grug. You friend. Maybe more?",
+  "Grug hit head on tree thinking of you.",
+  "Grug see you. Brain stop. Fire start.",
+  "Grug give biggest bone. That mean love.",
+  "you warm. Like fire. Grug like fire.",
+  "Grug smash mammoth for you. That love.",
+  "you no scream when see Grug. Grug feel special.",
+  "Grug grunt loud when you near. Is love noise.",
+  "Grug dream of you. Also of big rock. But mostly you.",
+  "you face not scary. Grug impressed.",
+  "Grug no know words. Just… ugh. But ugh mean love.",
+  "Grug fight sky beast for you. Sky beast scary. You worth it.",
+  "you strong. Smash good. Grug swoon.",
+  "Grug pick flower. Then eat. Then get new one for you.",
+  "Grug draw you on cave wall. Look like potato. Still love.",
+  "you give Grug weird feeling in belly. Not hunger. Maybe love?",
+  "Grug fall in lava for you. Slowly. Dramatic.",
+  "Grug build cave with extra moss. You live there now.",
+  "you hit Grug with stick. Grug blushing (inside)."
+];
+      const person = data.options.find(opt => opt.name === 'user');
+      const randomResponse = grugResponses[Math.floor(Math.random() * grugResponses.length)];
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `${person.value} ${randomResponse}`,
+        },
+      });
+    }
+
     console.error(`unknown command: ${name}`);
     return res.status(400).json({ error: 'unknown command idiot' });
   }
