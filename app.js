@@ -219,6 +219,27 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
+    if (name === 'mesmerize') {
+      const options = data.options;
+      const text = options.find(opt => opt.name === 'text').value;
+      const person = options.find(opt => opt.name === 'user').value;
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `${person} ${text}`,
+        },
+        embeds: [
+        {
+          image: {
+            url: 'https://tenor.com/view/miku-teto-mesmerizer-gif-790740585882126214',
+          },
+        },
+    ],
+      });
+    }
+
     if (name === 'tellpakos') {
       const options = data.options;
       const text = options.find(opt => opt.name === 'text').value;

@@ -154,6 +154,28 @@ const TELL_PAKOS_COMMAND = {
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND, IS_TRANS_COMMAND];
+const MESMERIZE_COMMAND = {
+  name: 'mesmerize',
+  description: 'Mesmerize someone with your words',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'user',
+      description: 'someone to mesmerize',
+      type: 3,
+      required: true,
+    },
+    {
+      name: 'text',
+      description: 'what you want to say',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND, IS_GAY_HOE_COMMAND, IS_TRANS_COMMAND, MESMERIZE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
