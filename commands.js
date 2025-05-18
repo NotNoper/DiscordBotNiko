@@ -97,6 +97,23 @@ const GRUG_LOVE_COMMAND = {
     },
   ],
 };
-const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND];
+
+const TELL_PAKOS_COMMAND = {
+  name: 'tellpakos',
+  description: 'Make Leo tell Pakos something for you because you fucking suck at social interactions you twat',
+  type: 1,
+  integration_types: [0, 1],
+  contexts: [0, 1, 2],
+  options: [
+    {
+      name: 'text',
+      description: 'what you want to tell mr pakos',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, HOT_COMMAND, DARTH_COMMAND, SUGGESTIONS_COMMAND, ANNOY_IRIDION_COMMAND, GRUG_LOVE_COMMAND, TELL_PAKOS_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

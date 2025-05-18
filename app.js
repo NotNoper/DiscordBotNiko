@@ -219,6 +219,19 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
       });
     }
 
+    if (name === 'tellpakos') {
+      const options = data.options;
+      const text = options.find(opt => opt.name === 'text').value;
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: `<@791223140210311180>: Mr. Pakos, Niko would like to say `+text,
+        },
+      });
+    }
+
     if (name === 'annoyiridion') {
       const dioMaddenerResponses = [
   "You're like a cloud—when you disappear, it's a beautiful day.",
