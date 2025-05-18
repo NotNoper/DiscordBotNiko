@@ -11,6 +11,7 @@ import {
 import { getRandomEmoji, DiscordRequest } from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
 import crypto from 'crypto';
+import fetch from 'node-fetch';
 
 // Create an express app
 const app = express();
@@ -143,26 +144,40 @@ if (name === 'amihot') {
   const attachmentId = options.find(opt => opt.name === 'image').value;
   const attachment = data.resolved.attachments[attachmentId];
 
-  // Create a stable hash from the image URL
-  const hash = crypto.createHash('sha256').update(attachment).digest('hex');
+  try {
+    // Download the actual image
+    const response = await fetch(attachment.url);
+    const buffer = await response.buffer();
 
-  // Convert hash to an integer, then scale to 1–10
-  const hashInt = parseInt(hash.slice(0, 8), 16); // Use first 8 hex digits
-  const rating = (hashInt % 10) + 1;
+    // Hash the file contents
+    const hash = crypto.createHash('sha256').update(buffer).digest('hex');
 
-  return res.send({
-    type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-    data: {
-      content: `🔥 I rate you a **${rating}/10** hotness level!`,
-      embeds: [
-        {
-          image: {
-            url: attachment.url,
+    // Turn hash into a number between 1 and 10
+    const hashInt = parseInt(hash.slice(0, 8), 16);
+    const rating = (hashInt % 10) + 1;
+
+    return res.send({
+      type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      data: {
+        content: `🔥 I rate you a **${rating}/10** hotness level!`,
+        embeds: [
+          {
+            image: {
+              url: attachment.url,
+            },
           },
-        },
-      ],
-    },
-  });
+        ],
+      },
+    });
+  } catch (error) {
+    console.error('Failed to fetch or hash image:', error);
+    return res.send({
+      type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      data: {
+        content: `⚠️ I couldn't rate you, something went wrong.`,
+      },
+    });
+  }
 }
 
 
