@@ -228,9 +228,13 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           content: `${person} ${text}`,
-           message_reference: {
-            message_id: '1373712246710206494',
-          },
+          embeds: [
+            {
+              video: {
+                url: 'https://media.tenor.com/CvlGX5L9B4YAAAPo/miku-teto.mp4',
+              },
+            },
+          ],
         },
       });
     }
